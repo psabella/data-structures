@@ -3,79 +3,42 @@ var Stack = function() {
   var newStack = {};
   // add a storage object to hold int keys + items
   newStack.storage = {};
+  newStack.count = 0;
   // add the methods to the new stack object
-  _.extend(newStack, Stack.stackMethods);
+  _.extend(newStack, stackMethods);
   // return the new stack object
   return newStack;
 };
 
 // property to store the methods for Stack
-Stack.stackMethods = {};
+var stackMethods = {};
 
 // add the methods to the class
-Stack.stackMethods.push = function(value) {
-  // use this.storage...other opportunities for this?
-  // check if there are any items in the stack
-  if (Object.keys(this.storage).length !== 0) {
-    // get the keys for each item
-    var keys = Object.keys(this.storage);
-    // convert the keys to numbers
-    var numKeys = keys.map(function(key){
-      return parseInt(key);
-    });
-    // find the max number among the keys - the key of the top item
-    var lastKey = numKeys.reduce(function(max, key){
-      if (key > max) {
-        max = key;
-        return max;
-      } else {
-        return max;
-      }
-    });
-    // increment the last key to get the new key
-    var newKey = lastKey + 1;
-  } else {
-    // if there were no items in the stack, the first key will be 1
-    var newKey = 1;
-  }
-  // set the new key to the value
-  this.storage[newKey.toString()] = value;
+stackMethods.push = function(value) {
+  this.count++;
+  this.storage[this.count] = value;
 };
 
-Stack.stackMethods.pop = function() {
-  // check if there are any items in the stack
-  if (Object.keys(this.storage).length !== 0) {
-    // get the keys for each item
-    var keys = Object.keys(this.storage);
-    // convert the keys to numbers
-    var numKeys = keys.map(function(key){
-      return parseInt(key);
-    });
-    // find the max number among the keys - the key of the top item
-    var lastKey = numKeys.reduce(function(max, key) {
-      if (key > max) {
-        max = key;
-        return max;
-      } else {
-        return max;
-      }
-    });
+stackMethods.pop = function() {
+  if (this.count > 0) {
     // get the value of the top item
-    var lastValue = this.storage[lastKey.toString()];
+    var lastValue = this.storage[this.count];
     // store the value of the top item
     var poppedValue = lastValue;
     // delete the key of the top item, thus removing it
-    delete this.storage[lastKey.toString()];
-    // return the item that was removed
+    delete this.storage[this.count];
+    // decrement
+    this.count--;
     return poppedValue;
+  } else {
+    return undefined;
   }
 };
 
-Stack.stackMethods.size = function() {
-  // get the keys of the items in the stack
-  var keys = Object.keys(this.storage);
+stackMethods.size = function() {
+  // get
   // return the length of the array of keys (which is the number of items currently in the stack)
-  return keys.length;
+  return this.count;
 };
 
 
