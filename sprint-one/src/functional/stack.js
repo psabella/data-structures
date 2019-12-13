@@ -13,15 +13,13 @@ var Stack = function() {
       // convert the keys to numbers
       var numKeys = keys.map(function(key){
         return parseInt(key);
-      })
+      });
       // find the max number among the keys - the key of the top item
       var lastKey = numKeys.reduce(function(max, key){
         if (key > max) {
           max = key;
-          return max;
-        } else {
-          return max;
         }
+        return max;
       });
       // increment the last key to get the new key
       var newKey = lastKey + 1;
@@ -41,15 +39,13 @@ var Stack = function() {
       // convert the keys to numbers
       var numKeys = keys.map(function(key){
         return parseInt(key);
-      })
+      });
       // find the max number among the keys - the key of the top item
       var lastKey = numKeys.reduce(function(max, key) {
         if (key > max) {
           max = key;
-          return max;
-        } else {
-          return max;
         }
+        return max;
       });
       // get the value of the top item
       var lastValue = storage[lastKey.toString()];

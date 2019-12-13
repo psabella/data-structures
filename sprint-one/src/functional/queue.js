@@ -20,10 +20,8 @@ var Queue = function() {
       var lastKey = numKeys.reduce(function(max, key){
         if (key > max) {
           max = key;
-          return max;
-        } else {
-          return max;
         }
+        return max;
       });
       // increment the last key to get the new key
       var newKey = lastKey + 1;
@@ -49,10 +47,8 @@ var Queue = function() {
       var firstKey = numKeys.reduce(function(min, key){
         if (key < min) {
           min = key;
-          return max;
-        } else {
-          return min;
         }
+        return min;
       });
       var firstValue = storage[firstKey.toString()];
       // debugger;
