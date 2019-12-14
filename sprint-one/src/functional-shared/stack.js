@@ -13,7 +13,7 @@ var Stack = function() {
 // property to store the methods for Stack
 var stackMethods = {};
 
-// add the methods to the class
+// add the methods to the methods object
 stackMethods.push = function(value) {
   // check if there are any items in the stack
   if (Object.keys(this.storage).length !== 0) {
