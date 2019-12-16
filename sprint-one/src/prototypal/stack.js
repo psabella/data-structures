@@ -2,7 +2,6 @@ var Stack = function() {
   var newStack = Object.create(stackMethods);
   newStack.storage = {};
   newStack.stackCount = 0;
-  console.log(newStack);
   return newStack;
 };
 
@@ -14,8 +13,11 @@ stackMethods = {
 
   pop(){
     if (this.stackCount > 0) {
+      // store the value of the top item
       var poppedItem = this.storage[this.stackCount];
+      // delete the key of the top item, thus removing it
       delete this.storage[this.stackCount];
+      // decrement count
       this.stackCount--;
       return poppedItem;
     }
