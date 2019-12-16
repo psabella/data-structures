@@ -1,3 +1,5 @@
+// refactored during sr code review w/ Aria
+
 var Stack = function() {
   var newStack = Object.create(stackMethods);
   newStack.storage = {};
